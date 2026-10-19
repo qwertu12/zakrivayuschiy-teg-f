@@ -22,7 +22,7 @@
   background-repeat: no-repeat;
 }
 
-.container{
+.container {
   background-color: #fff;
   border: 2px solid #000;
   inline-size: var(--content-inline-size);
@@ -30,7 +30,8 @@
   margin-inline: auto;
 }
 
-.header-title{
+.header-title {
+  container-type: inline-size;
   display: flex;
   margin: 100px auto;
   flex-direction: column;
@@ -42,17 +43,21 @@
   row-gap: 20px;
 }
 
-.header-title-text{
-  font-size: clamp(40px, calc(31.2px + 2.3474vw), 65px);
+.header-title-text {
+  /* Семь символов логотипа должны помещаться в ширину шапки. */
+  font-size: min(
+    clamp(49px, calc(43.3662px + 1.50235vw), 65px),
+    calc(100cqi / 7)
+  );
   text-transform: uppercase;
 }
 
-.header-title-subtitle{
+.header-title-subtitle {
   font-size: clamp(14px, calc(10.831px + 0.8451vw), 23px);
   text-transform: uppercase;
 }
 
-.card{
+.card {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,7 +79,7 @@
   margin-block-start: 25px;
 }
 
-.cards-content{
+.cards-content {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 50px;
@@ -86,14 +91,14 @@
   border-block: 2px solid #000;
 }
 
-.card-title{
+.card-title {
   padding: 4px 10px;
   font-size: 1.125rem;
   line-height: 22px;
   font-variation-settings: "wght" var(--title-font-weight);
 }
 
-.card-image{
+.card-image {
   display: block;
   inline-size: 100%;
   aspect-ratio: 1;
@@ -178,7 +183,7 @@
 }
 
 
-.memory-button{
+.memory-button {
   display: flex;
   justify-content: center;
   padding-block-start: 50px;
@@ -186,7 +191,7 @@
   
 }
 
-.button.save-button{
+.button.save-button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -220,7 +225,7 @@
   outline: none;
 }
 
-.button:focus-visible{
+.button:focus-visible {
   box-shadow: 2px 2px 0 var(--contour-color);
 }
 
@@ -254,24 +259,28 @@
 }
 
 .dialog[open] {
-  block-size: 191px;
-  inline-size: clamp(341px, 50vw, 353px);
+  block-size: fit-content;
+  inline-size: 353px;
+  max-inline-size: calc(100vw - 34px);
   display: grid;
   font-family: var(--accent-font);
   font-size: 14px;
   text-transform: uppercase;
-  grid-template-columns: 39px 1fr;
+  grid-template-columns: 39px minmax(0, 1fr);
   align-items: center;
   justify-content: center;
+  align-content: start;
   gap: 30px 20px;
-  padding-inline: 40px;
+  border: 2px solid var(--contour-color);
+  padding: 28px;
   line-height: 1.5;
-  padding-top: 30px;
 }
 
-.dialog__close-button{
-  inline-size: clamp(261px, 20vw, 293px);
-  min-height: 38px;
+.dialog__close-button {
+  grid-column: 1 / -1;
+  inline-size: 100%;
+  min-inline-size: 0;
+  min-block-size: 38px;
 }
 
 .dialog::backdrop {
@@ -279,40 +288,34 @@
 }
 
 @supports (text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff){
-  .card-label{
+  .card-label {
      text-shadow: none;
      text-stroke: 1px #fff;
     -webkit-text-stroke: 1px #fff;
   }
 }
 
-@media (width < 375px){
-
-    .dialog[open]{
-       padding-inline-start: 20px;
-       line-height: 1.2;
-    }
-
-    .dialog__close-button{
-      inline-size: 240px;
-    }
+@media (width <= 375px){
+  .dialog[open] {
+    padding-inline: 38px;
+  }
 }
 
 @media (width >= 1440px){
   
-  .header-title{
+  .header-title {
     min-block-size: 368px;
 
   }
 
-  .button.save-button{
+  .button.save-button {
       display: flex;
       flex-direction: row;
       min-block-size: 55px;
       row-gap: 8px;
     }
 
-    .save-button__icon{
+    .save-button__icon {
       width: 21px;
       aspect-ratio: 1/1;
     }
