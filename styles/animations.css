@@ -34,7 +34,6 @@
   opacity: 0;
 }
 
-/* Наведение: сердцевина начинает заполняться раньше основного тела. */
 .like-icon:hover .core {
   fill: var(--contour-color);
   transition-delay: 0s;
@@ -55,7 +54,6 @@
   transition-delay: 0.05s;
 }
 
-/* Эти правила идут после :hover и :active, чтобы выбранное сердце оставалось красным. */
 .like-icon.is-liked .core {
   fill: var(--animation-fill-color);
   transition-delay: 0s;

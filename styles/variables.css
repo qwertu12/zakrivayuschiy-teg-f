@@ -1,10 +1,10 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
 
 :root {
-  --main-font: "Inter";
-  --accent-font: "PressStart2P";
+  --main-font: "Inter", sans-serif;
+  --accent-font: "PressStart2P", sans-serif;
   --main-font-weight: 400;
-  --title-font-weight: 700;
+  --title-font-weight: 785;
   --content-inline-size: clamp(375px, 50vw, 700px);
   --page-background:
   repeating-linear-gradient(

@@ -1,1 +1,1 @@
-https://github.com/qwertu12/zakrivayuschiy-teg-f
+https://qwertu12.github.io/zakrivayuschiy-teg-f/
